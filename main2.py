@@ -31,15 +31,15 @@ class Ball:
 
     def update(self):
         # Move the ball
-        self.position_y += self.change_y
+        self.position_y += self.change_y #updating the position of the bay assigning the postion to the change by the user.
         self.position_x += self.change_x
 
         # See if the ball hit the edge of the screen. If so, change direction
-        if self.position_x < self.radius:
+        if self.position_x < self.radius: # I find this A little confusing i'm sure really what boundary it is setting up. What does the position have to do with the radius?
             self.position_x = self.radius
 
         if self.position_x > SCREEN_WIDTH - self.radius:
-            self.position_x = SCREEN_WIDTH - self.radius
+            self.position_x = SCREEN_WIDTH - self.radius # same confusion for this block of functions.
 
         if self.position_y < self.radius:
             self.position_y = self.radius
@@ -67,7 +67,7 @@ class MyGame(arcade.Window):
     def on_draw(self):
         """ Called whenever we need to draw the window. """
         arcade.start_render()
-        self.ball.draw()
+        self.ball.draw() #not really sure what this means. I think its just to start the game.
 
     def update(self, delta_time):
         self.ball.update()
@@ -77,7 +77,7 @@ class MyGame(arcade.Window):
         if key == arcade.key.LEFT:
             self.ball.change_x = -MOVEMENT_SPEED
         elif key == arcade.key.RIGHT:
-            self.ball.change_x = MOVEMENT_SPEED
+            self.ball.change_x = MOVEMENT_SPEED # this is assigning the keyboard keys to add/subtract from the x and y which equals the postiong of the ball/
         elif key == arcade.key.UP:
             self.ball.change_y = MOVEMENT_SPEED
         elif key == arcade.key.DOWN:
@@ -85,14 +85,14 @@ class MyGame(arcade.Window):
 
     def on_key_release(self, key, modifiers):
         """ Called whenever a user releases a key. """
-        if key == arcade.key.LEFT or key == arcade.key.RIGHT:
+        if key == arcade.key.LEFT or key == arcade.key.RIGHT: #whenever you let go of a key the ball stops moving
             self.ball.change_x = 0
-        elif key == arcade.key.UP or key == arcade.key.DOWN:
+        elif key == arcade.key.UP or key == arcade.key.DOWN: #^same
             self.ball.change_y = 0
 
 
 def main():
-    window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE) #it is saying that window is an unused variable to I am a little confused on what thsi is doing.
     arcade.run()
 
 
